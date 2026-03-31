@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Path - Religious Activities & Spiritual Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            overflow-x: hidden;
+            background: #faf9f6;
+        }
+        button {
+          cursor: pointer;
+          border: none;
+          background: none;
+          font-size: 16px;
+          font-weight: 600;
+          color: #8B4513;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+        }
+        .donation-wrapper {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          gap: 30px;
+          align-items: flex-start;
+          padding: 40px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(255, 186, 102, 0.5);
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+        }
+        /* Top Donation Section */
+        .top-donation {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+            padding: 50px 20px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+
+        }
+
+        .top-donation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom; */
+            background-image: url('./big-temple-sketch.png');
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0.3;
+        }
+
+        .top-donation-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .top-donation-header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .top-donation-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+
+        .top-donation-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .payment-iframe-container {
+            min-height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 100%;
+            transition: height 0.5s ease;
+        }
+
+        .payment-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+        }
+
+        .donation-info {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .donation-info h3 {
+            color: #8B4513;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .donation-info p {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .donation-info ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .donation-info li {
+            color: #666;
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .donation-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8B4513;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .donation-note {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff8dc 0%, #ffe4b5 100%);
+            border-radius: 10px;
+            border-left: 5px solid #8B4513;
+            text-align: center;
+            width: 100%;
+        }
+
+        .donation-note p {
+            color: #5a4a3a;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 50%, #6b4423 100%);
+            color: white;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.9;
+            text-align: left;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .swami-icon {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: #8B4513;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            border-radius: 2px;
+        }
+
+        /* Activities Section */
+        .activities {
+            background: white;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .activity-card {
+            background: linear-gradient(135deg, #fff8dc 0%, #ffffff 100%);
+            padding: 45px 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid #f5e6d3;
+            text-align: center;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.25);
+            border-color: #8B4513;
+        }
+
+        .activity-icon {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .activity-card h3 {
+            color: #8B4513;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .activity-card p {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: linear-gradient(135deg, #f5e6d3 0%, #fff8dc 100%);
+        }
+
+        .schedule-content {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .schedule-item {
+            background: white;
+            padding: 35px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 6px solid #8B4513;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.2);
+        }
+
+        .schedule-item h4 {
+            color: #8B4513;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .schedule-item .time {
+            color: #D2691E;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .schedule-item p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Values Section */
+        .values {
+            background: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .value-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #D2691E;
+        }
+
+        .value-card p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+        }
+
+        .testimonials .section-title {
+            color: white;
+        }
+
+        .testimonials .section-title::after {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 35px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .testimonial-card blockquote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 4rem;
+            opacity: 0.5;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c1810;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin: 12px 0;
+            opacity: 0.85;
+        }
+
+        .footer strong {
+            font-size: 1.2rem;
+            opacity: 1;
+            color: #D2691E;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .donation-wrapper {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content-container,
+            .donation-payment-form {
+                width: 100%;
+            }
+
+            .donation-payment-form {
+                min-width: 100%;
+            }
+
+            .payment-iframe-container,
+            .donation-info {
+                width: 100%;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h2,
+            .hero p {
+                text-align: center;
+            }
+
+            .swami-icon {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-donation-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .top-donation-header p {
+                font-size: 1rem;
+            }
+
+            .donation-wrapper {
+                padding: 25px 15px;
+            }
+
+            .payment-iframe {
+                height: 450px;
+            }
+
+            .payment-iframe-container {
+                min-height: 450px;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .content-section {
+                padding: 60px 20px;
+            }
+
+            .swami-icon {
+                max-width: 250px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS from ai.html for donation section */
+        .content-container {
+            flex: 1;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Payment Form Container - Right Side */
+        .donation-payment-form {
+            flex: 1;
+            min-width: 400px;
+        }
+
+        .donation-payment-form .payment-iframe-container {
+            overflow: hidden;
+            height: 650px;
+            border-radius: 10px;
+            transition: height 0.5s ease;
+        }
+
+        .donation-payment-form .payment-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .content-container h1 {
+            font-family: 'Playfair Display', serif;
+            color: #5a2600;
+            font-size: 32px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .donation-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 30px;
+            max-width: 600px;
+        }
+
+        .donation-list li {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .donate-btn {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+            font-weight: bold;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(234, 153, 44, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            transform: scale(1.05);
+        }
+
+        .impact-section {
+            margin-top: 40px;
+        }
+
+        .impact-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #5a2600;
+            text-align: left;
+        }
+
+        .impact-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .impact-item {
+            background: rgba(255, 250, 235, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            min-width: 165px;
+            box-shadow: 0 0 10px rgba(255, 190, 100, 0.2);
+            text-align: center;
+        }
+
+
+        .impact-item img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Top Donation Section -->
+    <section class="top-donation" id="donate">
+        <div class="top-donation-header">
+         <div class="top-donation-header-content">
+          <div>
+            <img src="./logo.png" alt="logo" width="100" height="100" style="border-radius: 50%;">
+          </div>
+            <div>
+              <h1>Karunalaya Rural Welfare Trust</h1>
+            </div>
+         </div>
+            <p>Your generous contribution helps us continue our spiritual services, community programs, and religious activities. Every donation brings us closer to serving our community with devotion and faith.</p>
+        </div>
+        <div class="donation-wrapper">
+          <!-- Content Container - Left Side -->
+          <div class="content-container">
+            <h1>Why Your Donation Matters</h1>
+            <p class="intro">Your generous contribution helps us continue our spiritual mission and serve our community with devotion and faith.</p>
+      
+            <ul class="donation-list">
+              <li><span class="icon">🪔</span>Support daily prayer services and spiritual programs</li>
+              <li><span class="icon">❤️</span>Fund community service and charitable activities</li>
+              <li><span class="icon">🏛️</span>Maintain our sacred spaces and facilities</li>
+              <li><span class="icon">🎉</span>Organize festivals and religious celebrations</li>
+            </ul>
+      
+            <div class="impact-section">
+              <h2>Donation Impact</h2>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <img src="https://img.icons8.com/ios-filled/50/meal.png" alt="meal icon"/>
+                  <p>₹ 500 =<br/>Meals for 10 devotees</p>
+                </div>
+                <div class="impact-item">
+                  <img src="https://img.icons8.com/ios-filled/50/charity.png" alt="community icon"/>
+                  <p>₹ 1,000 =<br/>Community service event</p>
+                </div>
+                <div class="impact-item">
+                  <img src="https://img.icons8.com/ios-filled/50/temple.png" alt="temple icon"/>
+                  <p>₹ 2,500 =<br/>Temple maintenance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Payment Form - Right Side -->
+          <div class="donation-payment-form">
+            <div class="payment-iframe-container">
+              <iframe
+                  class="payment-iframe" 
+                  src="https://erp.zohosecure.in/hosted-pages/5d8bdca36a74425cd52d5f550e3263aef3cfb14adaa2d18724294c560f48f69d/checkout?item_id%5B0%5D=3419009000000318009&item_quantity%5B0%5D=1&form=popup"
+                  title="Payment Widget"
+                  allow="payment"
+                  id="paymentWidget">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="donation-note">
+            <p><strong>🕉️</strong> Your donation supports our religious activities and community services. <strong>📜</strong> All contributions are used for spiritual programs and charitable work.</p>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>🕉️ Divine Path - Spiritual Growth & Community</h2>
+                <p>Join us in our journey of faith, devotion, and service. Together, we create a community bound by spiritual values, compassion, and the pursuit of divine wisdom.</p>
+                <p style="margin-top: 20px; font-style: italic; font-size: 1.2rem; opacity: 0.9;">
+                    "Arise, awake, and stop not until the goal is reached."<br>
+                    <span style="font-size: 1rem;">— Swami Vivekananda</span>
+                </p>
+            </div>
+            <div class="hero-image">
+                <img src="./swami-vivekanandha.png" height="600" width="430">
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities content-section">
+        <div class="container">
+            <h2 class="section-title">Our Religious Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">🕯️</div>
+                    <h3>Daily Prayers</h3>
+                    <p>Join us for morning and evening prayers, meditation sessions, and spiritual contemplation. Our daily services provide a peaceful space for reflection and connection with the divine.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">📿</div>
+                    <h3>Weekly Services</h3>
+                    <p>Participate in our weekly religious services featuring sacred readings, devotional songs, and spiritual discourses. A time for the community to come together in worship.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">🎵</div>
+                    <h3>Devotional Music</h3>
+                    <p>Experience the power of devotional music and chanting. Our musical programs uplift the spirit and create an atmosphere of divine presence and inner peace.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">📚</div>
+                    <h3>Scripture Study</h3>
+                    <p>Engage in deep study of sacred texts and scriptures. Our study groups explore spiritual wisdom, philosophy, and the teachings that guide our faith.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">🤝</div>
+                    <h3>Community Service</h3>
+                    <p>Put faith into action through our community service programs. We organize food drives, charity work, and support for those in need, following the path of compassion.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-icon">🎉</div>
+                    <h3>Festival Celebrations</h3>
+                    <p>Celebrate religious festivals and holy days with our community. These special occasions bring joy, unity, and deepen our connection to our spiritual traditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule content-section">
+        <div class="container">
+            <h2 class="section-title">Weekly Schedule</h2>
+            <div class="schedule-content">
+                <div class="schedule-item fade-in">
+                    <h4>🕐 Morning Prayer Service</h4>
+                    <span class="time">⏰ Monday - Friday: 6:00 AM - 7:00 AM</span>
+                    <p>Start your day with morning prayers, meditation, and spiritual reflection. A peaceful beginning to connect with the divine.</p>
+                </div>
+                <div class="schedule-item fade-in">
+                    <h4>📿 Evening Devotional</h4>
+                    <span class="time">⏰ Daily: 6:00 PM - 7:00 PM</span>
+                    <p>Evening prayers and devotional sessions to close your day with gratitude and spiritual contemplation.</p>
+                </div>
+                <div class="schedule-item fade-in">
+                    <h4>🎵 Weekly Service</h4>
+                    <span class="time">⏰ Sunday: 10:00 AM - 12:00 PM</span>
+                    <p>Our main weekly service featuring prayers, devotional music, spiritual discourse, and community fellowship.</p>
+                </div>
+                <div class="schedule-item fade-in">
+                    <h4>📚 Scripture Study Circle</h4>
+                    <span class="time">⏰ Wednesday: 7:00 PM - 8:30 PM</span>
+                    <p>Join our study group to explore sacred texts, discuss spiritual teachings, and deepen your understanding of our faith.</p>
+                </div>
+                <div class="schedule-item fade-in">
+                    <h4>🤝 Community Service Day</h4>
+                    <span class="time">⏰ Saturday: 9:00 AM - 12:00 PM</span>
+                    <p>Volunteer for community service activities, charity work, and helping those in need in our local area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values content-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="value-icon">💫</div>
+                    <h4>Faith</h4>
+                    <p>We believe in the power of faith to transform lives and guide us on our spiritual journey toward enlightenment and inner peace.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">❤️</div>
+                    <h4>Compassion</h4>
+                    <p>Compassion is at the heart of our community. We serve others with love, kindness, and understanding, following the path of selfless service.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">🤝</div>
+                    <h4>Unity</h4>
+                    <p>We come together as one community, regardless of background, united by our shared spiritual values and commitment to divine principles.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">📖</div>
+                    <h4>Wisdom</h4>
+                    <p>Through study, reflection, and practice, we seek divine wisdom that illuminates our path and helps us live with purpose and meaning.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">🌟</div>
+                    <h4>Devotion</h4>
+                    <p>We practice devotion through prayer, worship, and service, dedicating ourselves to the divine and the well-being of all beings.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">🌱</div>
+                    <h4>Growth</h4>
+                    <p>We support each other's spiritual growth, providing guidance, community, and opportunities for deepening our connection to the divine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials content-section">
+        <div class="container">
+            <h2 class="section-title">Community Voices</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <blockquote>
+                        This community has been a blessing in my life. The daily prayers and weekly services have brought me peace and a deeper connection to my faith.
+                    </blockquote>
+                    <div class="testimonial-author">— Priya, Community Member</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <blockquote>
+                        The scripture study sessions have opened my mind to new perspectives. I'm grateful for the wisdom and fellowship I've found here.
+                    </blockquote>
+                    <div class="testimonial-author">— Rajesh, Regular Attendee</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <blockquote>
+                        Being part of the community service activities has taught me the true meaning of compassion. This is more than a place of worship—it's a family.
+                    </blockquote>
+                    <div class="testimonial-author">— Meera, Volunteer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Divine Path Community</strong></p>
+            <p>Walking together on the path of faith, service, and spiritual growth.</p>
+            <p>© 2024 Divine Path. All rights reserved.</p>
+            <p>Contact: info@divinepath.org | +1 (555) 123-4567</p>
+            <p>📍 123 Spiritual Way, Faith City, FC 12345</p>
+        </div>
+    </footer>
+
+    <script>
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Iframe height adjustment from postMessage
+        const iframecontainer = document.querySelector('.payment-iframe-container');
+        window.addEventListener('message', function(event) {
+            if (event.origin !== 'https://billingcollections.localzohosecure.com') return;
+            const data = event.data;
+            if (data) {
+                iframecontainer.style.height = data + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
+
